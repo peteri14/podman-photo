@@ -1,0 +1,21 @@
+FROM ubi7:latest
+
+MAINTAINER Peter Ivanyi <ivanyi.peter@mik.pte.hu>
+
+RUN yum --enablerepo ubi-7-server-devtools-rpms install rh-php73-php rh-php73-php-fpm rh-php73-php-mysqlnd -y
+
+COPY php/www.conf /etc/opt/rh/rh-php73/php-fpm.d/www.conf
+
+RUN mkdir -p /opt/rh/rh-php73/root/usr/log/
+RUN touch /opt/rh/rh-php73/root/usr/log/www.access.log
+RUN touch /opt/rh/rh-php73/root/usr/log/www.slow.log
+RUN chown -R apache:apache /opt/rh/rh-php73/root/usr/log/
+
+RUN mkdir -p /var/log/php-fpm
+RUN touch /var/log/php-fpm/www-error.log
+
+EXPOSE 9000
+
+ENTRYPOINT ["/opt/rh/rh-php73/root/usr/sbin/php-fpm"]
+CMD ["--nodaemonize"]
+

@@ -1,0 +1,29 @@
+This is an educational project to demonstrate how to create several cooperating containers manually.
+This is not normal! In reality OpenShift or similar system should be used.
+
+There is a very simple PHP photo gallery web application in the 'code' directory, which requires
+three daemons:
+- httpd
+    This is an Apache server.
+- php-fpm
+    This is required for new Apache to execute PHP code via the fastCGI proxy system.
+- mysql
+    This is the database.
+These processes/daemons are "packaged" into three different containers.
+
+Directory structure:
+- code: PHP code to implement a photo gallery
+- php: files for Dockerfile-php
+- www: files for Dockerfile-www
+- images: pictures from the internet for demonstration
+
+Theoretically everything is automatic to create and run the system:
+- modify the parameters in file 'env'
+  IP addresses are the internal IP addresses in 10.88.0.0/16 (see man podman)
+- execute 'build.sh'
+- execute 'start.sh'
+
+Have fun.
+
+Peter Ivanyi, 2022
+

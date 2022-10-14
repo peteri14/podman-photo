@@ -1,0 +1,17 @@
+FROM ubi7:latest
+
+MAINTAINER Peter Ivanyi <ivanyi.peter@mik.pte.hu>
+
+RUN yum install httpd -y
+
+# configure that php-fpm is at an external address
+COPY www/php.conf /etc/httpd/conf.d
+
+# specify longer timeout for php-fpm
+COPY www/00-proxy_timeout.conf /etc/httpd/conf.modules.d
+
+EXPOSE 80
+
+ENTRYPOINT ["/usr/sbin/httpd"]
+CMD ["-D", "FOREGROUND"]
+

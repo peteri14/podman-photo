@@ -1,0 +1,15 @@
+
+DB_USER=gallery
+DB_PASSWORD=1234--5678
+DB_NAME=gallery
+
+IP_PHP=10.88.214.21
+IP_WEB=10.88.214.22
+IP_DB=10.88.214.23
+
+# No trailing / !!!!!
+DIR_APP=/opt/gallery/data
+DIR_DB=/opt/gallery/mysql
+
+
+
