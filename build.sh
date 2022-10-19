@@ -39,6 +39,7 @@ create_dir ${DIR_DB} "mysql"
 # copy the code
 echo -e "${GREEN}Copying code ...${OFF}"
 cp -r code/* ${DIR_APP}
+mkdir -p ${DIR_APP}/uploads
 chmod a+w ${DIR_APP}/uploads
 
 # configure the code
